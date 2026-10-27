@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: stockflow
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/stockflow}
+    username: ${DB_USER:stockflow}
+    password: ${DB_PASSWORD:stockflow}
+  jpa:
+    open-in-view: false          # sessão do banco NÃO fica aberta durante a renderização do JSON
+    hibernate:
+      ddl-auto: validate         # o esquema é do Flyway; o Hibernate só confere se bate com as entidades
+    properties:
+      hibernate:
+        default_batch_fetch_size: 50
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+  data:
+    web:
+      pageable:
+        max-page-size: 100
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+stockflow:
+  jwt:
+    # Em produção SEMPRE defina JWT_SECRET (mínimo 32 caracteres). Este valor é só para desenvolvimento.
+    secret: ${JWT_SECRET:dev-only-secret-change-me-0123456789abcdef}
+    expiration: 2h
+  admin:
+    # Usuário criado na primeira execução, se ainda não existir nenhum usuário.
+    username: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:admin12345}
+  report:
+    # Fuso usado para definir "o dia" nos relatórios de receita.
+    zone: ${REPORT_ZONE:America/Sao_Paulo}
