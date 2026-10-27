@@ -68,3 +68,55 @@ src/main/resources/db/migration/   migrações Flyway
 src/test/java/                     testes unitários e de integração
 Próximos passos
 Interface em React + TypeScript (segunda etapa).
+
+
+
+# StockFlow API 🚀
+
+> A robust, enterprise-grade RESTful API for inventory management, stock movement tracking, and sales control, engineered with modern Java and Spring Boot best practices.
+
+---
+
+## 📌 About the Project
+
+**StockFlow** is designed to solve critical challenges in commercial management: preventing stock discrepancies, handling high-concurrency sales safely, ensuring idempotency, and providing precise real-time revenue reporting. 
+
+Built with production-readiness in mind, this project demonstrates solid backend fundamentals, secure authentication pipelines, robust relational database modeling, and automated testing strategies.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+* **Core:** Java 17+, Spring Boot
+* **Security:** Spring Security, JWT (JSON Web Token) Stateless Authentication & Role-Based Access Control (RBAC)
+* **Persistence & Migrations:** Spring Data JPA, PostgreSQL, Flyway Database Migrations
+* **Resilience & Business Logic:** Concurrency control, Idempotency keys, custom business exceptions
+* **Containerization & Tooling:** Docker, Docker Compose, Maven
+* **Testing:** JUnit 5, Mockito, Spring Boot Test (Integration Tests, Concurrency & Idempotency ITs)
+* **Documentation:** Springdoc OpenAPI (Swagger UI)
+
+---
+
+## ✨ Key Features & Engineering Highlights
+
+1. **Secure Authentication & Authorization:** Stateless JWT filters with role-based routing (`ADMIN`, `USER`) and secure password hashing.
+2. **Concurrency & Idempotency Safeguards:** Implemented integration tests (`SaleConcurrencyIT`, `SaleIdempotencyIT`) to prevent race conditions during heavy inventory checkout and avoid duplicate transaction processing.
+3. **Automated Database Versioning:** Schema lifecycle managed cleanly via Flyway migrations.
+4. **Comprehensive Reporting:** Endpoints for stock valuation, top-selling products, and daily revenue metrics.
+5. **Robust Error Handling:** Global exception handling returning standardized, descriptive error responses for business rule violations and insufficient stock scenarios.
+
+---
+
+## 🚀 Getting Started (Quickstart with Docker)
+
+### Prerequisites
+* [Docker](https://www.docker.com/) & Docker Compose
+* Java 17+ (if running locally without containers)
+* Maven
+
+### Running the Application
+
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/HernandesWolf/StockFlow.git](https://github.com/HernandesWolf/StockFlow.git)
+   cd StockFlow
